@@ -6,7 +6,7 @@ export default function Dashboard() {
     <>
       <h1 className="text-xl mt-12">Manage your company</h1>
       <h1 className="text-3xl font-semibold text-blue-700">
-        Clients, Services
+        Customers, Services
       </h1>
       <Image
         src={DashboardImage}
