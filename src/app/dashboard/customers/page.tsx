@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Card from "@/components/customer-card";
+import Card from "@/components/customers/card";
 export default function Customers() {
   return (
     <div className="flex flex-col w-full">
