@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 
-export default function TicketsModal() {
+export default function TicketsTableModal() {
   return (
     <div className="w-2/3 max-w-md p-4 rounded-lg bg-white shadow 2xl drop-shadow-2xl absolute left-1/2 top-1/2 border translate-x-[-50%] translate-y-[-50%] flex flex-col gap-2">
       <div className="flex justify-between">

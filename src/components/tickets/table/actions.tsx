@@ -2,7 +2,7 @@
 import { Trash, File } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import Modal from "./tickets-modal";
+import Modal from "./modal";
 
 export default function TicketsTableActions() {
   const searchParams = useSearchParams();

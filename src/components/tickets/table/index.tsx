@@ -1,4 +1,4 @@
-import Actions from "./tickets-table-actions";
+import Actions from "./actions";
 export default function TicketsTable() {
   return (
     <table className="w-full">

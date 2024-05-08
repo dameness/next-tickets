@@ -1,4 +1,4 @@
-import TicketsTable from "@/components/tickets-table";
+import TicketsTable from "@/components/tickets/table";
 import Link from "next/link";
 
 export default function Tickets() {
