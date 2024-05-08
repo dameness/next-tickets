@@ -1,3 +1,4 @@
+import Input from "@/components/ui/input";
 import Link from "next/link";
 export default function NewCustomer() {
   return (
@@ -12,24 +13,15 @@ export default function NewCustomer() {
         <h1 className="text-3xl font-semibold">New customer</h1>
       </div>
       <h1 className="text-xl font-semibold">Name</h1>
-      <input
-        className="p-2 rounded-lg w-full border-2"
-        placeholder="Enter the name..."
-      />
+      <Input placeholder="Enter the name..." />
       <div className="grid xs:grid-cols-2 grid-cols-1 gap-2">
         <div>
           <h1 className="text-xl font-semibold">Telephone</h1>
-          <input
-            className="p-2 rounded-lg w-full border-2"
-            placeholder="Enter the telephone..."
-          />
+          <Input placeholder="Enter the telephone..." />
         </div>
         <div>
           <h1 className="text-xl font-semibold">E-mail</h1>
-          <input
-            className="p-2 rounded-lg w-full border-2"
-            placeholder="Enter the e-mail..."
-          />
+          <Input placeholder="Enter the e-mail..." />
         </div>
       </div>
       <button className="bg-blue-400 rounded-lg w-full p-2 mt-4 text-white font-semibold">

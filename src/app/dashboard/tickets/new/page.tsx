@@ -1,3 +1,4 @@
+import Input from "@/components/ui/input";
 import Link from "next/link";
 
 export default function NewTicket() {
@@ -13,10 +14,7 @@ export default function NewTicket() {
         <h1 className="text-3xl font-semibold">New ticket</h1>
       </div>
       <h1 className="text-xl font-semibold">Title</h1>
-      <input
-        className="p-2 rounded-lg w-full border-2"
-        placeholder="Enter the title..."
-      />
+      <Input placeholder="Enter the title..." />
 
       <h1 className="text-xl font-semibold">Problem description</h1>
       <textarea
