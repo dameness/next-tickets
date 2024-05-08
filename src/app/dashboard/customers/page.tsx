@@ -2,11 +2,11 @@ import Link from "next/link";
 import Card from "@/components/customer-card";
 export default function Customers() {
   return (
-    <div className="flex flex-col w-[96%]">
+    <div className="flex flex-col w-full">
       <div className="flex items-center justify-between w-full mt-4 mb-8">
         <h1 className="sm:text-3xl text-2xl font-bold">Customers</h1>
         <Link
-          href="/dashboard/tickets/new"
+          href="/dashboard/customers/new"
           className="py-2 px-6 bg-blue-500 text-neutral-50 rounded-md"
         >
           New customer

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NewTicket() {
   return (
-    <div className="mt-4 flex flex-col w-[96%] gap-2">
+    <div className="mt-4 flex flex-col w-full gap-2">
       <div className="flex items-center gap-2 mb-2">
         <Link
           href="/dashboard/tickets"

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Tickets() {
   return (
     <>
-      <div className="flex items-center justify-between w-[96%] mt-4 mb-8">
+      <div className="flex items-center justify-between w-full mt-4 mb-8">
         <h1 className="sm:text-3xl text-2xl font-bold">Tickets</h1>
         <Link
           href="/dashboard/tickets/new"

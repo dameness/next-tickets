@@ -1,7 +1,7 @@
 import Actions from "./tickets-table-actions";
 export default function TicketsTable() {
   return (
-    <table className="w-[96%]">
+    <table className="w-full">
       <thead>
         <tr className="border-b">
           <th className="text-left">Customer</th>
