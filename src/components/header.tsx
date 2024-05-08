@@ -8,7 +8,7 @@ export default function Header() {
         <span className="text-blue-600 text-xl">NEXT</span> TICKETS
       </Link>
       <nav className="flex items-center gap-2">
-        <Link href="/dashboard/tickets">
+        <Link href="/dashboard">
           <User />
         </Link>
         <Link href="/">
