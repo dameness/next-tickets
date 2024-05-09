@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className=" bg-neutral-700 text-neutral-200 w-full mb-4 flex justify-between items-center py-2 px-4 h-16">
-      <Link className="font-extrabold text-sm cursor-pointer" href="/dashboard">
+      <Link className="font-extrabold text-sm cursor-pointer" href="/">
         <span className="text-blue-600 text-xl">NEXT</span> TICKETS
       </Link>
 
