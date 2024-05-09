@@ -1,20 +1,22 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
-import { User, LogOut, LoaderCircle } from "lucide-react";
+import { LogOut, LoaderCircle, Settings2 } from "lucide-react";
 import GuestImage from "@/assets/guest.png";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { status, data } = useSession();
-
+  const router = useRouter();
   async function handleLogin() {
     await signIn();
   }
 
   async function handleLogout() {
-    await signOut();
+    const data = await signOut({ redirect: false, callbackUrl: "/" });
+    router.push(data.url, { scroll: false });
   }
 
   return (
@@ -39,8 +41,8 @@ export default function Header() {
                 />
               </Link>
             )}
-            <Link href="/dashboard">
-              <User />
+            <Link href="/tickets">
+              <Settings2 />
             </Link>
             <button onClick={handleLogout}>
               <LogOut />
