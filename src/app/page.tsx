@@ -9,8 +9,9 @@ export default function Home() {
       </h1>
       <Image
         src={HomeImage}
-        alt="dashboard-image"
+        alt="home-image"
         className="w-2/3 min-w-72 max-w-xl mt-8"
+        priority
       />
     </>
   );
