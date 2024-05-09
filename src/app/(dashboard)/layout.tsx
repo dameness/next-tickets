@@ -1,6 +1,20 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { redirect } from "next/navigation";
+
+export default async function DashboardLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    redirect("/");
+  }
+
   return (
     <>
       <div className="w-full flex items-center gap-4 p-4 rounded-lg bg-neutral-800 text-neutral-200">
