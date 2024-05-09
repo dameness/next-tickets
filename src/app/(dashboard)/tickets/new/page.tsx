@@ -1,13 +1,20 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "@/components/ui/input";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import type { SubmitErrorHandler, SubmitHandler } from "react-hook-form";
-import type { Ticket } from "@/models/zod/ticket";
+import { TicketSchema, type Ticket } from "@/models/zod/ticket";
 
 export default function NewTicket() {
-  const { handleSubmit, register } = useForm<Ticket>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<Ticket>({
+    resolver: zodResolver(TicketSchema),
+  });
 
   const onValid: SubmitHandler<Ticket> = (data) => {};
 

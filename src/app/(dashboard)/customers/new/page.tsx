@@ -1,12 +1,19 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "@/components/ui/input";
 import Link from "next/link";
 import { useForm, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
-import type { Customer } from "@/models/zod/customer";
+import { CustomerSchema, type Customer } from "@/models/zod/customer";
 
 export default function NewCustomer() {
-  const { handleSubmit, register } = useForm<Customer>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<Customer>({
+    resolver: zodResolver(CustomerSchema),
+  });
 
   const onValid: SubmitHandler<Customer> = (data) => {};
 
