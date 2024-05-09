@@ -5,7 +5,7 @@ export default function NewCustomer() {
     <div className="mt-4 flex flex-col w-full gap-2">
       <div className="flex items-center gap-2 mb-2">
         <Link
-          href="/dashboard/customers"
+          href="/customers"
           className="px-4 py-2 text-white bg-neutral-800 rounded-lg"
         >
           Return

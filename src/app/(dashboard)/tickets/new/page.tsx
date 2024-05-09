@@ -6,7 +6,7 @@ export default function NewTicket() {
     <div className="mt-4 flex flex-col w-full gap-2">
       <div className="flex items-center gap-2 mb-2">
         <Link
-          href="/dashboard/tickets"
+          href="/tickets"
           className="px-4 py-2 text-white bg-neutral-800 rounded-lg"
         >
           Return

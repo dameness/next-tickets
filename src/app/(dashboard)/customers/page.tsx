@@ -6,7 +6,7 @@ export default function Customers() {
       <div className="flex items-center justify-between w-full mt-4 mb-8">
         <h1 className="sm:text-3xl text-2xl font-bold">Customers</h1>
         <Link
-          href="/dashboard/customers/new"
+          href="/customers/new"
           className="py-2 px-6 bg-blue-500 text-neutral-50 rounded-md"
         >
           New customer
