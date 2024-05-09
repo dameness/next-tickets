@@ -2,7 +2,9 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import { User, LogOut, LoaderCircle } from "lucide-react";
+import GuestImage from "@/assets/guest.png";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const { status, data } = useSession();
@@ -26,6 +28,17 @@ export default function Header() {
           <LoaderCircle className="animate-spin transition" />
         ) : status === "authenticated" ? (
           <>
+            {data.user.image && (
+              <Link href="#">
+                <Image
+                  src={data.user.image || GuestImage}
+                  alt="user"
+                  className="rounded-full border-2 border-red"
+                  width={36}
+                  height={36}
+                />
+              </Link>
+            )}
             <Link href="/dashboard">
               <User />
             </Link>
