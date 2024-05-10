@@ -3,7 +3,7 @@ import HomeImage from "@/assets/home-image.svg";
 export default function Home() {
   return (
     <>
-      <h1 className="text-xl mt-12">Manage your company</h1>
+      <h1 className="text-xl xs:mt-24 mt-20">Manage your company</h1>
       <h1 className="xs:text-3xl text-2xl font-semibold text-blue-700 ">
         Customers, Services
       </h1>

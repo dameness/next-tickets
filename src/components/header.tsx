@@ -2,6 +2,7 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import { LogOut, LoaderCircle, Settings2 } from "lucide-react";
+import { FaGoogle } from "react-icons/fa6";
 import GuestImage from "@/assets/guest.png";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,7 +12,7 @@ export default function Header() {
   const { status, data } = useSession();
   const router = useRouter();
   async function handleLogin() {
-    await signIn();
+    await signIn("google");
   }
 
   async function handleLogout() {
@@ -51,9 +52,10 @@ export default function Header() {
         ) : (
           <button
             onClick={handleLogin}
-            className="bg-blue-600 px-4 py-2 rounded-lg text-neutral-200"
+            className="flex gap-1.5 items-center bg-blue-600 px-4 py-2 rounded-lg text-neutral-200"
           >
-            Log in
+            <FaGoogle />
+            Sign in
           </button>
         )}
       </nav>
