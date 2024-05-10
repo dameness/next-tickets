@@ -15,7 +15,7 @@ export default function NewTicket() {
   } = useForm<Ticket>({
     resolver: zodResolver(TicketSchema),
     defaultValues: {
-      customerId: "",
+      customer: "",
     },
   });
 
@@ -64,15 +64,15 @@ export default function NewTicket() {
 
       <div className="flex justify-between px-1.5">
         <h1 className="text-xl font-semibold">Customer</h1>
-        {errors.customerId && (
-          <h1 className="text-red-500">{errors.customerId.message}</h1>
+        {errors.customer && (
+          <h1 className="text-red-500">{errors.customer.message}</h1>
         )}
       </div>
       <select
         className={`p-2 bg-transparent rounded-lg w-full ${
-          errors.customerId ? "border border-red-400" : "border-2"
+          errors.customer ? "border border-red-400" : "border-2"
         }`}
-        {...register("customerId")}
+        {...register("customer")}
       >
         <option value="">Select a customer...</option>
         <option value="x">Customer 1</option>
