@@ -35,10 +35,13 @@ export default function NewCustomer() {
       </div>
 
       <div className="flex justify-between px-1.5">
-        <h1 className="text-xl font-semibold">Name</h1>
+        <label htmlFor="name" className="text-xl font-semibold">
+          Name
+        </label>
         {errors.name && <h1 className="text-red-500">{errors.name.message}</h1>}
       </div>
       <Input
+        id="name"
         className={`${errors.name ? "border border-red-400" : "border-2"}`}
         placeholder="Enter the name..."
         {...register("name")}
@@ -47,12 +50,15 @@ export default function NewCustomer() {
       <div className="grid xs:grid-cols-2 grid-cols-1 gap-2">
         <div>
           <div className="flex justify-between px-1.5 mb-2">
-            <h1 className="text-xl font-semibold">Telephone</h1>
+            <label htmlFor="phone" className="text-xl font-semibold">
+              Telephone
+            </label>
             {errors.phone && (
               <h1 className="text-red-500">{errors.phone.message}</h1>
             )}
           </div>
           <Input
+            id="phone"
             className={`${errors.phone ? "border border-red-400" : "border-2"}`}
             placeholder="Enter the telephone..."
             {...register("phone")}
@@ -60,12 +66,15 @@ export default function NewCustomer() {
         </div>
         <div>
           <div className="flex justify-between px-1.5 mb-2">
-            <h1 className="text-xl font-semibold">E-mail</h1>
+            <label htmlFor="email" className="text-xl font-semibold">
+              E-mail
+            </label>
             {errors.email && (
               <h1 className="text-red-500">{errors.email.message}</h1>
             )}
           </div>
           <Input
+            id="email"
             className={`${errors.email ? "border border-red-400" : "border-2"}`}
             placeholder="Enter the e-mail..."
             {...register("email")}

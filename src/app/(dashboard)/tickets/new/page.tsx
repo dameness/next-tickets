@@ -39,22 +39,28 @@ export default function NewTicket() {
       </div>
 
       <div className="flex justify-between px-1.5">
-        <h1 className="text-xl font-semibold">Title</h1>
+        <label htmlFor="name" className="text-xl font-semibold">
+          Title
+        </label>
         {errors.name && <h1 className="text-red-500">{errors.name.message}</h1>}
       </div>
       <Input
+        id="name"
         className={`${errors.name ? "border border-red-400" : "border-2"}`}
         placeholder="Enter the title..."
         {...register("name")}
       />
 
       <div className="flex justify-between px-1.5">
-        <h1 className="text-xl font-semibold">Problem description</h1>
+        <label htmlFor="description" className="text-xl font-semibold">
+          Problem description
+        </label>
         {errors.description && (
           <h1 className="text-red-500">{errors.description.message}</h1>
         )}
       </div>
       <textarea
+        id="description"
         className={`p-2 rounded-lg w-full ${
           errors.description ? "border border-red-400" : "border-2"
         }`}
@@ -63,12 +69,15 @@ export default function NewTicket() {
       />
 
       <div className="flex justify-between px-1.5">
-        <h1 className="text-xl font-semibold">Customer</h1>
+        <label htmlFor="customer" className="text-xl font-semibold">
+          Customer
+        </label>
         {errors.customer && (
           <h1 className="text-red-500">{errors.customer.message}</h1>
         )}
       </div>
       <select
+        id="customer"
         className={`p-2 bg-transparent rounded-lg w-full ${
           errors.customer ? "border border-red-400" : "border-2"
         }`}
