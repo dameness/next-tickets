@@ -2,11 +2,18 @@
 
 import Input from "@/components/ui/input";
 import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
-import type { Customer } from "@/models/zod/customer";
+import { CustomerSchema, type Customer } from "@/models/zod/customer";
 
 export default function NewCustomer() {
-  const { handleSubmit, register } = useForm<Customer>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<Customer>({
+    resolver: zodResolver(CustomerSchema),
+  });
 
   const onValid: SubmitHandler<Customer> = (data) => {};
 
@@ -27,17 +34,42 @@ export default function NewCustomer() {
         <h1 className="text-3xl font-semibold">New customer</h1>
       </div>
 
-      <h1 className="text-xl font-semibold">Name</h1>
-      <Input placeholder="Enter the name..." {...register("name")} />
+      <div className="flex justify-between px-1.5">
+        <h1 className="text-xl font-semibold">Name</h1>
+        {errors.name && <h1 className="text-red-500">{errors.name.message}</h1>}
+      </div>
+      <Input
+        className={`${errors.name ? "border border-red-400" : "border-2"}`}
+        placeholder="Enter the name..."
+        {...register("name")}
+      />
 
       <div className="grid xs:grid-cols-2 grid-cols-1 gap-2">
         <div>
-          <h1 className="text-xl font-semibold">Telephone</h1>
-          <Input placeholder="Enter the telephone..." {...register("phone")} />
+          <div className="flex justify-between px-1.5 mb-2">
+            <h1 className="text-xl font-semibold">Telephone</h1>
+            {errors.phone && (
+              <h1 className="text-red-500">{errors.phone.message}</h1>
+            )}
+          </div>
+          <Input
+            className={`${errors.phone ? "border border-red-400" : "border-2"}`}
+            placeholder="Enter the telephone..."
+            {...register("phone")}
+          />
         </div>
         <div>
-          <h1 className="text-xl font-semibold">E-mail</h1>
-          <Input placeholder="Enter the e-mail..." {...register("email")} />
+          <div className="flex justify-between px-1.5 mb-2">
+            <h1 className="text-xl font-semibold">E-mail</h1>
+            {errors.email && (
+              <h1 className="text-red-500">{errors.email.message}</h1>
+            )}
+          </div>
+          <Input
+            className={`${errors.email ? "border border-red-400" : "border-2"}`}
+            placeholder="Enter the e-mail..."
+            {...register("email")}
+          />
         </div>
       </div>
       <button
