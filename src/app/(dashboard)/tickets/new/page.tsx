@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { SubmitErrorHandler, SubmitHandler } from "react-hook-form";
 import { TicketSchema, type Ticket } from "@/models/zod/ticket";
+import TextArea from "@/components/ui/textarea";
+import Select from "@/components/ui/select";
 
 export default function NewTicket() {
   const {
@@ -46,7 +48,7 @@ export default function NewTicket() {
       </div>
       <Input
         id="name"
-        className={`${errors.name ? "border border-red-400" : "border-2"}`}
+        error={errors.name}
         placeholder="Enter the title..."
         {...register("name")}
       />
@@ -59,11 +61,9 @@ export default function NewTicket() {
           <h1 className="text-red-500">{errors.description.message}</h1>
         )}
       </div>
-      <textarea
+      <TextArea
         id="description"
-        className={`p-2 rounded-lg w-full ${
-          errors.description ? "border border-red-400" : "border-2"
-        }`}
+        error={errors.description}
         placeholder="Describe your issue..."
         {...register("description")}
       />
@@ -76,16 +76,10 @@ export default function NewTicket() {
           <h1 className="text-red-500">{errors.customer.message}</h1>
         )}
       </div>
-      <select
-        id="customer"
-        className={`p-2 bg-transparent rounded-lg w-full ${
-          errors.customer ? "border border-red-400" : "border-2"
-        }`}
-        {...register("customer")}
-      >
+      <Select id="customer" error={errors.customer} {...register("customer")}>
         <option value="">Select a customer...</option>
         <option value="x">Customer 1</option>
-      </select>
+      </Select>
 
       <button
         type="submit"

@@ -42,7 +42,7 @@ export default function NewCustomer() {
       </div>
       <Input
         id="name"
-        className={`${errors.name ? "border border-red-400" : "border-2"}`}
+        error={errors.name}
         placeholder="Enter the name..."
         {...register("name")}
       />
@@ -59,7 +59,7 @@ export default function NewCustomer() {
           </div>
           <Input
             id="phone"
-            className={`${errors.phone ? "border border-red-400" : "border-2"}`}
+            error={errors.phone}
             placeholder="Enter the telephone..."
             {...register("phone")}
           />
@@ -75,7 +75,7 @@ export default function NewCustomer() {
           </div>
           <Input
             id="email"
-            className={`${errors.email ? "border border-red-400" : "border-2"}`}
+            error={errors.email}
             placeholder="Enter the e-mail..."
             {...register("email")}
           />
