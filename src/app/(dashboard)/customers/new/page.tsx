@@ -7,6 +7,7 @@ import { useForm, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
 import { CustomerSchema, type Customer } from "@/models/zod/customer";
 import { useSession } from "next-auth/react";
 import api from "@/config/api";
+import { useRouter } from "next/navigation";
 
 export default function NewCustomer() {
   const {
@@ -17,6 +18,7 @@ export default function NewCustomer() {
     resolver: zodResolver(CustomerSchema),
   });
 
+  const router = useRouter();
   const session = useSession();
 
   const onValid: SubmitHandler<Customer> = (data) => {
@@ -28,6 +30,9 @@ export default function NewCustomer() {
       .catch((error) => {
         console.error(error);
         alert("Error creating customer!");
+      })
+      .finally(() => {
+        router.replace("/customers");
       });
   };
 
