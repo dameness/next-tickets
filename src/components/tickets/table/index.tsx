@@ -14,7 +14,7 @@ export default function TicketsTable() {
       <tbody>
         <tr className="border-b h-10">
           <td>José Silva</td>
-          <td className="text-center">01/05/2024</td>
+          <td className="text-center sm:table-cell hidden">01/05/2024</td>
           <td>
             <div className="mx-auto px-2 py-0.5 w-24 text-center rounded-lg bg-green-500">
               ACTIVE
@@ -26,7 +26,7 @@ export default function TicketsTable() {
         </tr>
         <tr className="border-b h-10">
           <td>José Silva</td>
-          <td className="text-center">01/05/2024</td>
+          <td className="text-center sm:table-cell hidden ">01/05/2024</td>
           <td>
             <div className="mx-auto px-2 py-0.5 w-24 text-center rounded-lg bg-green-500">
               ACTIVE

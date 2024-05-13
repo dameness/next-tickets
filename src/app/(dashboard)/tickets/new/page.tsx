@@ -1,11 +1,12 @@
 "use client";
-
-import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "@/components/ui/input";
 import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { SubmitErrorHandler, SubmitHandler } from "react-hook-form";
 import { TicketSchema, type Ticket } from "@/models/zod/ticket";
+import TextArea from "@/components/ui/textarea";
+import Select from "@/components/ui/select";
 
 export default function NewTicket() {
   const {
@@ -14,6 +15,9 @@ export default function NewTicket() {
     formState: { errors },
   } = useForm<Ticket>({
     resolver: zodResolver(TicketSchema),
+    defaultValues: {
+      customer: "",
+    },
   });
 
   const onValid: SubmitHandler<Ticket> = (data) => {};
@@ -35,23 +39,46 @@ export default function NewTicket() {
         <h1 className="text-3xl font-semibold">New ticket</h1>
       </div>
 
-      <h1 className="text-xl font-semibold">Title</h1>
-      <Input placeholder="Enter the title..." {...register("name")} />
+      <div className="flex justify-between px-1.5">
+        <label htmlFor="name" className="text-xl font-semibold">
+          Title
+        </label>
+        {errors.name && <h1 className="text-red-500">{errors.name.message}</h1>}
+      </div>
+      <Input
+        id="name"
+        error={errors.name}
+        placeholder="Enter the title..."
+        {...register("name")}
+      />
 
-      <h1 className="text-xl font-semibold">Problem description</h1>
-      <textarea
-        className="p-2 rounded-lg w-full border-2"
+      <div className="flex justify-between px-1.5">
+        <label htmlFor="description" className="text-xl font-semibold">
+          Problem description
+        </label>
+        {errors.description && (
+          <h1 className="text-red-500">{errors.description.message}</h1>
+        )}
+      </div>
+      <TextArea
+        id="description"
+        error={errors.description}
         placeholder="Describe your issue..."
         {...register("description")}
       />
 
-      <h1 className="text-xl font-semibold">Select customer</h1>
-      <select
-        className="p-2 bg-transparent rounded-lg w-full border-2"
-        {...register("customerId")}
-      >
+      <div className="flex justify-between px-1.5">
+        <label htmlFor="customer" className="text-xl font-semibold">
+          Customer
+        </label>
+        {errors.customer && (
+          <h1 className="text-red-500">{errors.customer.message}</h1>
+        )}
+      </div>
+      <Select id="customer" error={errors.customer} {...register("customer")}>
+        <option value="">Select a customer...</option>
         <option value="x">Customer 1</option>
-      </select>
+      </Select>
 
       <button
         type="submit"

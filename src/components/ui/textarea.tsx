@@ -2,14 +2,14 @@ import { twMerge } from "tailwind-merge";
 import { ComponentProps, forwardRef } from "react";
 import { FieldError } from "react-hook-form";
 
-type InputProps = ComponentProps<"input"> & {
+type TextAreaProps = ComponentProps<"textarea"> & {
   error?: FieldError;
 };
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ className, error, ...props }, ref) => {
     return (
-      <input
+      <textarea
         className={twMerge(
           `p-2 rounded-lg w-full ${
             error ? "border border-red-400" : "border-2"
@@ -23,4 +23,4 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-export default Input;
+export default TextArea;
