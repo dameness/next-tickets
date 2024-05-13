@@ -5,6 +5,8 @@ import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
 import { CustomerSchema, type Customer } from "@/models/zod/customer";
+import { useSession } from "next-auth/react";
+import api from "@/config/api";
 
 export default function NewCustomer() {
   const {
@@ -15,7 +17,18 @@ export default function NewCustomer() {
     resolver: zodResolver(CustomerSchema),
   });
 
-  const onValid: SubmitHandler<Customer> = (data) => {};
+  const session = useSession();
+
+  const onValid: SubmitHandler<Customer> = (data) => {
+    api
+      .post("/customers", { ...data, userId: session.data?.user.id })
+      .then(() => {
+        alert("success");
+      })
+      .catch((error) => {
+        alert("error: " + error);
+      });
+  };
 
   const onInvalid: SubmitErrorHandler<Customer> = (errors) => {};
 
