@@ -23,10 +23,11 @@ export default function NewCustomer() {
     api
       .post("/customers", { ...data, userId: session.data?.user.id })
       .then(() => {
-        alert("success");
+        alert("Customer registered!");
       })
       .catch((error) => {
-        alert("error: " + error);
+        console.error(error);
+        alert("Error creating customer!");
       });
   };
 
