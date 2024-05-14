@@ -36,6 +36,7 @@ export default function NewCustomer() {
         );
       })
       .finally(() => {
+        router.refresh();
         router.replace("/customers");
       });
   };

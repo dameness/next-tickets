@@ -1,6 +1,17 @@
 import Link from "next/link";
 import Card from "@/components/customers/card";
-export default function Customers() {
+import { Customer } from "@/models/zod/customer";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import prisma from "@/lib/prisma";
+
+export default async function Customers() {
+  const session = await getServerSession(authOptions);
+
+  const customers: Customer[] = await prisma.customer.findMany({
+    where: { userId: session?.user.id },
+  });
+
   return (
     <div className="flex flex-col w-full">
       <div className="flex items-center justify-between w-full mt-4 mb-8">
@@ -13,26 +24,14 @@ export default function Customers() {
         </Link>
       </div>
       <div className="grid sm:grid-cols-3 grid-cols-2 gap-x-2 gap-y-4">
-        <Card
-          name="Customer X"
-          telephone="(xx)-99999-9999"
-          email="mail@mail.com"
-        />
-        <Card
-          name="Customer X"
-          telephone="(xx)-99999-9999"
-          email="mail@mail.com"
-        />
-        <Card
-          name="Customer X"
-          telephone="(xx)-99999-9999"
-          email="mail@mail.com"
-        />
-        <Card
-          name="Customer X"
-          telephone="(xx)-99999-9999"
-          email="mail@mail.com"
-        />
+        {customers.map((customer, index) => (
+          <Card
+            key={index}
+            name={customer.name}
+            phone={customer.phone}
+            email={customer.email}
+          />
+        ))}
       </div>
     </div>
   );
