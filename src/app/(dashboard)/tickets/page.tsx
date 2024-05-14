@@ -1,7 +1,19 @@
 import TicketsTable from "@/components/tickets/table";
+import { authOptions } from "@/lib/auth";
+import prisma from "@/lib/prisma";
+import { Ticket } from "@prisma/client";
+import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-export default function Tickets() {
+export default async function Tickets() {
+  const session = await getServerSession(authOptions);
+
+  const tickets: Ticket[] = await prisma.ticket.findMany({
+    where: {
+      userId: session?.user.id,
+    },
+  }); // from prisma/client
+
   return (
     <>
       <div className="flex items-center justify-between w-full mt-4 mb-8">
@@ -13,7 +25,16 @@ export default function Tickets() {
           Open ticket
         </Link>
       </div>
-      <TicketsTable />
+      {tickets.length === 0 ? (
+        <>
+          <h1 className="text-xl mt-5">You don't have any ticket.</h1>
+          <Link className="text-sm text-blue-400" href="/tickets/new">
+            Create a ticket
+          </Link>
+        </>
+      ) : (
+        <TicketsTable tickets={tickets} />
+      )}
     </>
   );
 }

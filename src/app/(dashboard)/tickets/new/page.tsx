@@ -22,6 +22,6 @@ export default async function NewTicket() {
       </>
     );
   } else {
-    return <TicketForm />;
+    return <TicketForm userId={session?.user.id} customers={customers} />;
   }
 }

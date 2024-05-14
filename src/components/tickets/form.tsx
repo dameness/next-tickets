@@ -7,8 +7,16 @@ import Select from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitErrorHandler, SubmitHandler } from "react-hook-form";
 import { TicketSchema, Ticket } from "@/models/zod/ticket";
+import { useRouter } from "next/navigation";
+import api from "@/config/api";
+import { Customer } from "@/models/zod/customer";
 
-export default function TicketForm() {
+interface Props {
+  userId?: string;
+  customers: Customer[];
+}
+
+export default function TicketForm({ userId, customers }: Props) {
   const {
     handleSubmit,
     register,
@@ -16,11 +24,29 @@ export default function TicketForm() {
   } = useForm<Ticket>({
     resolver: zodResolver(TicketSchema),
     defaultValues: {
-      customer: "",
+      customerId: "",
     },
   });
 
-  const onValid: SubmitHandler<Ticket> = (data) => {};
+  const router = useRouter();
+
+  const onValid: SubmitHandler<Ticket> = (data) => {
+    api
+      .post("/tickets", { ...data, userId, status: "OPEN" })
+      .then(() => {
+        alert("Ticket registered!");
+        router.replace("/tickets");
+        router.refresh();
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(
+          `Error sending ticket! ${
+            error instanceof Error && ` - ${error.message}`
+          }`
+        );
+      });
+  };
 
   const onInvalid: SubmitErrorHandler<Ticket> = (errors) => {};
 
@@ -68,16 +94,20 @@ export default function TicketForm() {
       />
 
       <div className="flex justify-between px-1.5">
-        <label htmlFor="customer" className="text-xl font-semibold">
+        <label htmlFor="customerId" className="text-xl font-semibold">
           Customer
         </label>
-        {errors.customer && (
-          <h1 className="text-red-500">{errors.customer.message}</h1>
+        {errors.customerId && (
+          <h1 className="text-red-500">{errors.customerId.message}</h1>
         )}
       </div>
-      <Select id="customer" error={errors.customer} {...register("customer")}>
+      <Select
+        id="customerId"
+        error={errors.customerId}
+        options={customers}
+        {...register("customerId")}
+      >
         <option value="">Select a customer...</option>
-        <option value="x">Customer 1</option>
       </Select>
 
       <button
