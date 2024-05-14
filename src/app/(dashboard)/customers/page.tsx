@@ -23,7 +23,7 @@ export default async function Customers() {
           New customer
         </Link>
       </div>
-      <div className="grid sm:grid-cols-3 grid-cols-2 gap-x-2 gap-y-4">
+      <div className="grid md:grid-cols-3 grid-cols-2 gap-x-2 gap-y-4">
         {customers.map((customer, index) => (
           <Card
             key={index}
