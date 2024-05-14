@@ -2,12 +2,18 @@ import { twMerge } from "tailwind-merge";
 import { ComponentProps, forwardRef } from "react";
 import { FieldError } from "react-hook-form";
 
+interface Option {
+  name: string;
+  id?: string;
+}
+
 type SelectProps = ComponentProps<"select"> & {
   error?: FieldError;
+  options: Option[];
 };
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className, error, children, ...props }, ref) => {
+  ({ className, options, error, children, ...props }, ref) => {
     return (
       <select
         className={twMerge(
@@ -20,6 +26,11 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         ref={ref}
       >
         {children}
+        {options.map((option) => (
+          <option key={option.id} value={option.id}>
+            {option.name}
+          </option>
+        ))}
       </select>
     );
   }
