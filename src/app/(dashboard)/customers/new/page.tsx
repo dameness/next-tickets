@@ -29,7 +29,11 @@ export default function NewCustomer() {
       })
       .catch((error) => {
         console.error(error);
-        alert("Error creating customer!");
+        alert(
+          `Error creating customer! ${
+            error instanceof Error && ` - ${error.message}`
+          }`
+        );
       })
       .finally(() => {
         router.replace("/customers");
