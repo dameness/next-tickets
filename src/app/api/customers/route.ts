@@ -46,6 +46,19 @@ export async function DELETE(req: Request) {
       );
     }
 
+    const findTickets = await prisma.ticket.findFirst({
+      where: {
+        customerId: id,
+      },
+    });
+
+    if (findTickets) {
+      return NextResponse.json(
+        { message: "Can't delete a customer that have open tickets." },
+        { status: 400 }
+      );
+    }
+
     await prisma.customer.delete({ where: { id: id } });
 
     return NextResponse.json({ message: "Success." });
