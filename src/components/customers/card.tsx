@@ -1,17 +1,13 @@
-interface CardProps {
-  name: string;
-  telephone: string;
-  email: string;
-}
+import { Customer } from "@/models/zod/customer";
 
-export default function CustomerCard({ name, telephone, email }: CardProps) {
+export default function CustomerCard({ name, phone, email }: Customer) {
   return (
     <div className="flex flex-col gap-1 p-2 border-2 max-w-sm rounded-lg">
       <h1>
         <span className="font-semibold">Name: </span> {name}
       </h1>
       <h1>
-        <span className="font-semibold">Telephone: </span> {telephone}
+        <span className="font-semibold">Telephone: </span> {phone}
       </h1>
       <h1>
         <span className="font-semibold">E-mail: </span> {email}
