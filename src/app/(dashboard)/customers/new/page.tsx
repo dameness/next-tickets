@@ -26,6 +26,8 @@ export default function NewCustomer() {
       .post("/customers", { ...data, userId: session.data?.user.id })
       .then(() => {
         alert("Customer registered!");
+        router.replace("/customers");
+        router.refresh();
       })
       .catch((error) => {
         console.error(error);
@@ -34,10 +36,6 @@ export default function NewCustomer() {
             error instanceof Error && ` - ${error.message}`
           }`
         );
-      })
-      .finally(() => {
-        router.refresh();
-        router.replace("/customers");
       });
   };
 

@@ -13,13 +13,11 @@ export default function CustomerCard({ id, name, phone, email }: Customer) {
       })
       .then(() => {
         alert("Customer deleted!");
+        router.refresh();
       })
       .catch((error) => {
         console.error(error);
         alert("Error deleting customer!");
-      })
-      .finally(() => {
-        router.refresh();
       });
   }
 
