@@ -24,9 +24,10 @@ export default async function Customers() {
         </Link>
       </div>
       <div className="grid md:grid-cols-3 grid-cols-2 gap-x-2 gap-y-4">
-        {customers.map((customer, index) => (
+        {customers.map((customer) => (
           <Card
-            key={index}
+            key={customer.id}
+            id={customer.id}
             name={customer.name}
             phone={customer.phone}
             email={customer.email}
