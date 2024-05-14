@@ -24,9 +24,12 @@ export default async function Customers() {
         </Link>
       </div>
       {customers.length === 0 ? (
-        <h1 className="xs:text-left text-center xl:text-2xl sm:text-xl text-lg">
-          You have no customers yet!
-        </h1>
+        <div className="text-center mt-5">
+          <h1 className="text-xl">You don't have any customer.</h1>
+          <Link className="text-sm text-blue-400" href="/customers/new">
+            Create a customer
+          </Link>
+        </div>
       ) : (
         <div className="grid md:grid-cols-3 grid-cols-2 gap-x-2 gap-y-4">
           {customers.map((customer) => (
