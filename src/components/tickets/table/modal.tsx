@@ -3,12 +3,12 @@ import Link from "next/link";
 
 export default function TicketsTableModal() {
   return (
-    <div className="w-2/3 max-w-md p-4 rounded-lg bg-white shadow 2xl drop-shadow-2xl absolute left-1/2 top-1/2 border translate-x-[-50%] translate-y-[-50%] flex flex-col gap-2">
+    <div className="w-2/3 max-w-md max-h-[96vh] overflow-y-auto p-4 rounded-lg bg-white shadow 2xl drop-shadow-2xl absolute left-1/2 top-1/2 border translate-x-[-50%] translate-y-[-50%] flex flex-col gap-2">
       <div className="flex justify-between">
         <h1 className="text-2xl font-semibold">Ticket details</h1>
         <Link
           href={`?modal=$false`}
-          className="px-4 py-2 text-white bg-red-500 rounded-lg"
+          className="px-4 py-2 flex items-center text-white bg-red-500 rounded-lg"
         >
           Close
         </Link>

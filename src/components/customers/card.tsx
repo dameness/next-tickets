@@ -3,7 +3,7 @@ import { Customer } from "@/models/zod/customer";
 export default function CustomerCard({ name, phone, email }: Customer) {
   return (
     <div className="flex flex-col justify-between gap-1 p-2 border-2 max-w-sm rounded-lg">
-      <div className="flex-flex-col">
+      <div className="flex-flex-col overflow-hidden">
         <h1>
           <span className="font-semibold">Name: </span> {name}
         </h1>
