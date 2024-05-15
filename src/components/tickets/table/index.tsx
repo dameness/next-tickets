@@ -31,12 +31,16 @@ export default function TicketsTable({ tickets }: Props) {
               {ticket.created_at?.toLocaleDateString("en-US")}
             </td>
             <td>
-              <div className="mx-auto px-2 py-0.5 w-24 text-center rounded-lg bg-green-500">
+              <div
+                className={`mx-auto px-2 py-0.5 w-24 text-center rounded-lg ${
+                  ticket.status === "OPEN" ? "bg-green-500" : "bg-amber-400"
+                }`}
+              >
                 {ticket.status}
               </div>
             </td>
             <td>
-              <Actions id={ticket.id} />
+              <Actions id={ticket.id} status={ticket.status} />
             </td>
           </tr>
         ))}
