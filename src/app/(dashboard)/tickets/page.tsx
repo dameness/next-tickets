@@ -15,6 +15,9 @@ export default async function Tickets() {
     include: {
       customer: true,
     },
+    orderBy: {
+      updated_at: "desc",
+    },
   }); // from prisma/client
 
   return (
