@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 export default function CustomerCard({ id, name, phone, email }: Customer) {
   const router = useRouter();
+
   async function handleDeleteCustomer() {
     api
       .delete(`/customers`, {
@@ -17,7 +18,11 @@ export default function CustomerCard({ id, name, phone, email }: Customer) {
       })
       .catch((error) => {
         console.error(error);
-        alert("Error deleting customer!");
+        alert(
+          `Error deleting customer! ${
+            error instanceof Error && ` - ${error.message}`
+          }`
+        );
       });
   }
 
