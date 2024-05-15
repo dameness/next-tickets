@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/header";
 import "./globals.css";
-import AuthProvider from "@/providers/auth";
+import Providers from "@/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
+        <Providers>
           <Header />
           <main className="flex w-[96%] max-w-7xl mx-auto h-[calc(100vh - 64px)] flex-col items-center ">
             {children}
           </main>
-        </AuthProvider>
+        </Providers>
       </body>
     </html>
   );

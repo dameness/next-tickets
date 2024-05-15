@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import Modal from "./modal";
 import api from "@/config/api";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 interface Props {
   id: string;
@@ -21,14 +23,14 @@ export default function TicketsTableActions({ id, status }: Props) {
     api
       .put("/tickets", { status: newStatus }, { params: { id } })
       .then(() => {
-        alert("Ticket updated!");
+        toast("Ticket updated!");
         router.refresh();
       })
       .catch((error) => {
         console.error(error);
-        alert(
+        toast(
           `Error updating ticket! ${
-            error instanceof Error && ` - ${error.message}`
+            error instanceof AxiosError && ` - ${error.message}`
           }`
         );
       });
@@ -39,14 +41,14 @@ export default function TicketsTableActions({ id, status }: Props) {
         params: { id },
       })
       .then(() => {
-        alert("Ticket deleted!");
+        toast("Ticket deleted!");
         router.refresh();
       })
       .catch((error) => {
         console.error(error);
-        alert(
+        toast(
           `Error deleting ticket! ${
-            error instanceof Error && ` - ${error.message}`
+            error instanceof AxiosError && ` - ${error.message}`
           }`
         );
       });

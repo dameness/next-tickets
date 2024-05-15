@@ -8,6 +8,8 @@ import { CustomerSchema, type Customer } from "@/models/zod/customer";
 import { useSession } from "next-auth/react";
 import api from "@/config/api";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 export default function NewCustomer() {
   const {
@@ -25,15 +27,15 @@ export default function NewCustomer() {
     api
       .post("/customers", { ...data, userId: session.data?.user.id })
       .then(() => {
-        alert("Customer registered!");
+        toast("Customer registered!");
         router.replace("/customers");
         router.refresh();
       })
       .catch((error) => {
         console.error(error);
-        alert(
+        toast(
           `Error creating customer! ${
-            error instanceof Error && ` - ${error.message}`
+            error instanceof AxiosError && ` - ${error.message}`
           }`
         );
       });

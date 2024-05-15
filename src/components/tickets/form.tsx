@@ -10,6 +10,8 @@ import { TicketSchema, Ticket } from "@/models/zod/ticket";
 import { useRouter } from "next/navigation";
 import api from "@/config/api";
 import { Customer } from "@/models/zod/customer";
+import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 interface Props {
   userId?: string;
@@ -34,15 +36,15 @@ export default function TicketForm({ userId, customers }: Props) {
     api
       .post("/tickets", { ...data, userId, status: "OPEN" })
       .then(() => {
-        alert("Ticket registered!");
+        toast("Ticket registered!");
         router.replace("/tickets");
         router.refresh();
       })
       .catch((error) => {
         console.error(error);
-        alert(
+        toast(
           `Error sending ticket! ${
-            error instanceof Error && ` - ${error.message}`
+            error instanceof AxiosError && ` - ${error.message}`
           }`
         );
       });

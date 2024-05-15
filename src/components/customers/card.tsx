@@ -3,6 +3,8 @@
 import api from "@/config/api";
 import { Customer } from "@/models/zod/customer";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 export default function CustomerCard({ id, name, phone, email }: Customer) {
   const router = useRouter();
@@ -13,14 +15,19 @@ export default function CustomerCard({ id, name, phone, email }: Customer) {
         params: { id },
       })
       .then(() => {
-        alert("Customer deleted!");
+        toast("Customer deleted!");
         router.refresh();
       })
       .catch((error) => {
         console.error(error);
-        alert(
+        toast(
           `Error deleting customer! ${
-            error instanceof Error && ` - ${error.message}`
+            error instanceof AxiosError &&
+            ` - ${
+              error.response?.status !== 400
+                ? error.message
+                : "This customer have tickets!"
+            }`
           }`
         );
       });
