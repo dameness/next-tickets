@@ -7,21 +7,28 @@ import api from "@/config/api";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
+import { Prisma } from "@prisma/client";
+
+type TicketWithCustomer = Prisma.TicketGetPayload<{
+  include: {
+    customer: true;
+  };
+}>;
 
 interface Props {
-  id: string;
-  status: string;
+  ticket: TicketWithCustomer;
+  index: number;
 }
 
-export default function TicketsTableActions({ id, status }: Props) {
+export default function TicketsTableActions({ ticket, index }: Props) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const modal = (searchParams.get("modal") || "false") as string;
+  const modal = (searchParams.get(`modal-${index}`) || "false") as string;
 
   async function handleStatusChange() {
-    const newStatus = status === "OPEN" ? "CLOSED" : "OPEN";
+    const newStatus = ticket.status === "OPEN" ? "CLOSED" : "OPEN";
     api
-      .put("/tickets", { status: newStatus }, { params: { id } })
+      .put("/tickets", { status: newStatus }, { params: { id: ticket.id } })
       .then(() => {
         toast("Ticket updated!");
         router.refresh();
@@ -38,7 +45,7 @@ export default function TicketsTableActions({ id, status }: Props) {
   async function handleDeleteTicket() {
     api
       .delete("/tickets", {
-        params: { id },
+        params: { id: ticket.id },
       })
       .then(() => {
         toast("Ticket deleted!");
@@ -58,7 +65,7 @@ export default function TicketsTableActions({ id, status }: Props) {
     <>
       <div className="flex gap-2 items-center justify-end">
         <button onClick={handleStatusChange}>
-          {status === "OPEN" ? (
+          {ticket.status === "OPEN" ? (
             <CheckCheck className="text-green-400" />
           ) : (
             <ArrowBigUpDash className="text-amber-400" />
@@ -67,11 +74,11 @@ export default function TicketsTableActions({ id, status }: Props) {
         <button onClick={handleDeleteTicket}>
           <Trash className="text-red-400" />
         </button>
-        <Link href={`?modal=${modal === "true" ? "false" : "true"}`}>
+        <Link href={`?modal-${index}=${modal === "true" ? "false" : "true"}`}>
           <File className="text-blue-600" />
         </Link>
       </div>
-      {modal === "true" && <Modal />}
+      {modal === "true" && <Modal ticket={ticket} index={index} />}
     </>
   );
 }

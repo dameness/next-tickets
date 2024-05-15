@@ -24,7 +24,7 @@ export default function TicketsTable({ tickets }: Props) {
       </thead>
 
       <tbody>
-        {tickets.map((ticket) => (
+        {tickets.map((ticket, index) => (
           <tr key={ticket.id} className="border-b h-10">
             <td>{ticket.customer?.name}</td>
             <td className="text-center sm:table-cell hidden">
@@ -40,7 +40,7 @@ export default function TicketsTable({ tickets }: Props) {
               </div>
             </td>
             <td>
-              <Actions id={ticket.id} status={ticket.status} />
+              <Actions index={index} ticket={ticket} />
             </td>
           </tr>
         ))}
