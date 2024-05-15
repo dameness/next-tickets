@@ -1,8 +1,14 @@
-import { Ticket } from "@prisma/client";
+import { Customer, Prisma, Ticket } from "@prisma/client";
 import Actions from "./actions";
 
+type TicketWithCustomer = Prisma.TicketGetPayload<{
+  include: {
+    customer: true;
+  };
+}>;
+
 interface Props {
-  tickets: Ticket[]; // from prisma/client
+  tickets: TicketWithCustomer[]; // from prisma/client
 }
 
 export default function TicketsTable({ tickets }: Props) {
@@ -20,7 +26,7 @@ export default function TicketsTable({ tickets }: Props) {
       <tbody>
         {tickets.map((ticket) => (
           <tr key={ticket.id} className="border-b h-10">
-            <td>{ticket.name}</td>
+            <td>{ticket.customer?.name}</td>
             <td className="text-center sm:table-cell hidden">
               {ticket.created_at?.toLocaleDateString("en-US")}
             </td>

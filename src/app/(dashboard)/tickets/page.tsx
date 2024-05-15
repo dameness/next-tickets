@@ -1,16 +1,19 @@
 import TicketsTable from "@/components/tickets/table";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { Ticket } from "@prisma/client";
+import { Ticket, Customer } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
 export default async function Tickets() {
   const session = await getServerSession(authOptions);
 
-  const tickets: Ticket[] = await prisma.ticket.findMany({
+  const tickets = await prisma.ticket.findMany({
     where: {
       userId: session?.user.id,
+    },
+    include: {
+      customer: true,
     },
   }); // from prisma/client
 
