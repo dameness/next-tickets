@@ -17,7 +17,7 @@ export default function TicketsTable({ tickets }: Props) {
       <thead>
         <tr className="border-b">
           <th className="text-left">Customer</th>
-          <th className="text-center">Date Modified</th>
+          <th className="text-center sm:table-cell hidden">Date Modified</th>
           <th className="text-center">Status</th>
           <th className="text-right">#</th>
         </tr>
