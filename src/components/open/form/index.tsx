@@ -105,7 +105,7 @@ export default function OpenTicketForm() {
 
           <button
             type="submit"
-            className="text-white font-bold bg-blue-500 flex items-center justify-center gap-3 px-2 h-10 rounded-lg"
+            className="text-white hover:opacity-90 transition-all font-bold bg-blue-500 flex items-center justify-center gap-3 px-2 h-10 rounded-lg"
           >
             Search customer
             <Search />

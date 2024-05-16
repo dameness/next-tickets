@@ -31,7 +31,7 @@ export default function Nav({ session }: Props) {
       {session === null ? (
         <button
           onClick={handleLogin}
-          className="flex gap-1.5 items-center bg-blue-600 px-4 py-2 rounded-lg text-neutral-200"
+          className="flex gap-1.5 items-center bg-blue-600 px-4 py-2 rounded-lg text-neutral-200 hover:opacity-90 transition-all"
         >
           <FaGoogle />
           Sign in
@@ -48,14 +48,14 @@ export default function Nav({ session }: Props) {
             />
           </Link>
 
-          <Link href="/open">
+          <Link href="/open" className="hover:text-neutral-500">
             <ExternalLink />
           </Link>
 
-          <Link href="/tickets">
+          <Link href="/tickets" className="hover:text-neutral-500">
             <Settings2 />
           </Link>
-          <button onClick={handleLogout}>
+          <button className="hover:text-red-500/50" onClick={handleLogout}>
             <LogOut />
           </button>
         </>

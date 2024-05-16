@@ -60,7 +60,7 @@ export default function TicketForm({ userId, customers }: Props) {
       <div className="flex items-center gap-2 mb-2">
         <Link
           href="/tickets"
-          className="px-4 py-2 text-white bg-neutral-800 rounded-lg"
+          className="px-4 py-2 text-white bg-neutral-800 rounded-lg hover:opacity-90 transition-all"
         >
           Return
         </Link>
@@ -114,7 +114,7 @@ export default function TicketForm({ userId, customers }: Props) {
 
       <button
         type="submit"
-        className="bg-blue-400 rounded-lg w-full p-2 mt-4 text-white font-semibold"
+        className="bg-blue-400 rounded-lg w-full p-2 mt-4 text-white font-semibold hover:opacity-90 transition-all"
       >
         Register
       </button>

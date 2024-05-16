@@ -48,7 +48,7 @@ export default function CustomerCard({ id, name, phone, email }: Customer) {
       </div>
       <button
         onClick={handleDeleteCustomer}
-        className="mt-2 px-2 bg-red-400 text-white rounded-lg mx-auto w-1/2 max-w-32"
+        className="mt-2 px-2 bg-red-400 text-white rounded-lg mx-auto w-1/2 max-w-32 hover:opacity-90 transition-all"
       >
         Delete
       </button>

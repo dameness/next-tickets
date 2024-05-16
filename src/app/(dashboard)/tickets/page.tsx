@@ -30,7 +30,7 @@ export default async function Tickets() {
           <RefreshButton />
           <Link
             href="/tickets/new"
-            className="py-2 px-6 xs:font-normal font-semibold bg-blue-500 text-neutral-50 rounded-md"
+            className="py-2 px-6 xs:font-normal font-semibold bg-blue-500 text-neutral-50 rounded-md hover:opacity-90 transition-all"
           >
             Open ticket
           </Link>

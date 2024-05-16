@@ -84,7 +84,7 @@ export default function TicketSection({ customerIds }: Props) {
       />
       <button
         type="submit"
-        className="bg-blue-500 mt-2 w-full h-11 px-2 text-white rounded-lg font-bold"
+        className="bg-blue-500 mt-2 w-full h-11 px-2 text-white rounded-lg font-bold hover:opacity-90 transition-all"
       >
         Register
       </button>
