@@ -64,7 +64,7 @@ export default function TicketForm({ userId, customers }: Props) {
         >
           Return
         </Link>
-        <h1 className="text-3xl font-semibold">New ticket</h1>
+        <h1 className="xs:text-3xl text-[27px]/8 font-semibold">New ticket</h1>
       </div>
 
       <div className="flex justify-between px-1.5">

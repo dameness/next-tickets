@@ -8,9 +8,9 @@ export default function RefreshButton() {
   return (
     <button
       onClick={() => router.refresh()}
-      className="bg-green-500 py-2 px-6 text-neutral-50 rounded-md"
+      className="bg-green-500 py-2 xs:px-6 px-2 text-neutral-50 rounded-md"
     >
-      <RefreshCcw />
+      <RefreshCcw strokeWidth={2.3} />
     </button>
   );
 }

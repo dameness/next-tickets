@@ -26,11 +26,11 @@ export default async function Tickets() {
     <>
       <div className="flex items-center justify-between w-full mt-4 mb-8">
         <h1 className="sm:text-3xl text-2xl font-bold">Tickets</h1>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           <RefreshButton />
           <Link
             href="/tickets/new"
-            className="py-2 px-6 bg-blue-500 text-neutral-50 rounded-md"
+            className="py-2 px-6 xs:font-normal font-semibold bg-blue-500 text-neutral-50 rounded-md"
           >
             Open ticket
           </Link>

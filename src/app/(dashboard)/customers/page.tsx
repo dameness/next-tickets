@@ -18,7 +18,7 @@ export default async function Customers() {
         <h1 className="sm:text-3xl text-2xl font-bold">Customers</h1>
         <Link
           href="/customers/new"
-          className="py-2 px-6 bg-blue-500 text-neutral-50 rounded-md"
+          className="py-2 xs:px-6 px-3 bg-blue-500 text-neutral-50 rounded-md"
         >
           New customer
         </Link>

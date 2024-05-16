@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, LoaderCircle, Settings2 } from "lucide-react";
+import { LogOut, LoaderCircle, Settings2, ExternalLink } from "lucide-react";
 import { FaGoogle } from "react-icons/fa6";
 import GuestImage from "@/assets/guest.png";
 import Link from "next/link";
@@ -29,7 +29,6 @@ export default function Nav({ session }: Props) {
   return (
     <nav className="flex items-center gap-2">
       {session === null ? (
-        // <LoaderCircle className="animate-spin transition" />
         <button
           onClick={handleLogin}
           className="flex gap-1.5 items-center bg-blue-600 px-4 py-2 rounded-lg text-neutral-200"
@@ -43,10 +42,14 @@ export default function Nav({ session }: Props) {
             <Image
               src={session.user.image || GuestImage}
               alt="user"
-              className="rounded-full border-2 border-red"
+              className="rounded-full"
               width={36}
               height={36}
             />
+          </Link>
+
+          <Link href="/open">
+            <ExternalLink />
           </Link>
 
           <Link href="/tickets">

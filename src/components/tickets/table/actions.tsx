@@ -66,16 +66,16 @@ export default function TicketsTableActions({ ticket, index }: Props) {
       <div className="flex gap-2 items-center justify-end">
         <button onClick={handleStatusChange}>
           {ticket.status === "OPEN" ? (
-            <CheckCheck className="text-green-400" />
+            <CheckCheck className="text-green-400 xs:w-6 w-[18px] xs:h-6 h-[18px]" />
           ) : (
-            <ArrowBigUpDash className="text-amber-400" />
+            <ArrowBigUpDash className="text-amber-400 xs:w-6 w-[18px] xs:h-6 h-[18px]" />
           )}
         </button>
         <button onClick={handleDeleteTicket}>
-          <Trash className="text-red-400" />
+          <Trash className="text-red-400 xs:w-6 w-[18px] xs:h-6 h-[18px]" />
         </button>
         <Link href={`?modal-${index}=${modal === "true" ? "false" : "true"}`}>
-          <File className="text-blue-600" />
+          <File className="text-blue-600 xs:w-6 w-[18px] xs:h-6 h-[18px]" />
         </Link>
       </div>
       {modal === "true" && <Modal ticket={ticket} index={index} />}
