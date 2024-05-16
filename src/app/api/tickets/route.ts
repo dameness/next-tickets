@@ -10,12 +10,6 @@ type SubmitTicketProps = Ticket & {
 };
 
 export async function POST(req: Request) {
-  const session = await getServerSession(authOptions);
-
-  if (!session || !session.user) {
-    return NextResponse.json({ message: "Not Authorized." }, { status: 401 });
-  }
-
   const data: SubmitTicketProps = await req.json();
 
   try {

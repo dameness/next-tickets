@@ -4,6 +4,38 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const email = searchParams.get("email");
+
+  if (!email) {
+    return NextResponse.json({ message: "Invalid e-mail!" }, { status: 406 });
+  }
+
+  try {
+    const customers = await prisma.customer.findMany({
+      where: {
+        email: email as string,
+      },
+    });
+
+    if (customers.length === 0) {
+      return NextResponse.json(
+        { message: "E-mail not found!" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ customers });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      { message: "Couldn't get customer" },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
 
