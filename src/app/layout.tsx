@@ -7,8 +7,22 @@ import Providers from "@/providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next Tickets",
+  title: {
+    default: "Next Tickets",
+    template: "%s | Next Tickets",
+  },
   description: "Tickets app created with Next.js",
+  keywords: ["tickets", "issues", "manage"],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+    },
+  },
 };
 
 export default function RootLayout({
