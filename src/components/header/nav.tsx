@@ -38,7 +38,7 @@ export default function Nav({ session }: Props) {
         </button>
       ) : (
         <>
-          <Link href="#">
+          <Link href="/user">
             <Image
               src={session.user.image || GuestImage}
               alt="user"
