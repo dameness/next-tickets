@@ -3,7 +3,7 @@ import axios from "axios";
 const api = axios.create({
   baseURL: `${
     !process.env.HOST_URL
-      ? "http://localhost:3000"
+      ? "http://localhost:3000/api"
       : process.env.HOST_URL?.endsWith("/")
       ? "api"
       : "/api"
